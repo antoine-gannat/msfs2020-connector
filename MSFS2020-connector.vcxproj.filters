@@ -13,17 +13,47 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\commands">
+      <UniqueIdentifier>{f3939891-3bca-47f7-bfde-bce1227a158e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\commands">
+      <UniqueIdentifier>{29b7f444-aacd-4bcf-952d-d953949f172a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="MSFS2020-connector.cpp">
+    <ClCompile Include="src\MSFS2020-connector.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Serial.cpp">
+    <ClCompile Include="src\Serial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SimConnector.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commands\AltitudeCmd.cpp">
+      <Filter>Source Files\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commands\ACommand.cpp">
+      <Filter>Source Files\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="src\CommandMapper.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Serial.h">
+    <ClInclude Include="include\Serial.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\SimConnector.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\ACommand.hpp">
+      <Filter>Header Files\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\AltitudeCmd.hpp">
+      <Filter>Header Files\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="include\CommandMapper.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

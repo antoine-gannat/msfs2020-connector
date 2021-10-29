@@ -118,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(MSFS_SDK)SimConnect SDK\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSFS_SDK)SimConnect SDK\include;$(SolutionDir)include</AdditionalIncludeDirectories>
       <CompileAsManaged>true</CompileAsManaged>
       <AdditionalOptions>/Zc:twoPhase- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -137,7 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(MSFS_SDK)SimConnect SDK\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(MSFS_SDK)SimConnect SDK\include;$(SolutionDir)include</AdditionalIncludeDirectories>
       <CompileAsManaged>true</CompileAsManaged>
       <AdditionalOptions>/Zc:twoPhase- %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
@@ -151,11 +151,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MSFS2020-connector.cpp" />
-    <ClCompile Include="Serial.cpp" />
+    <ClCompile Include="src\CommandMapper.cpp" />
+    <ClCompile Include="src\commands\ACommand.cpp" />
+    <ClCompile Include="src\commands\AltitudeCmd.cpp" />
+    <ClCompile Include="src\MSFS2020-connector.cpp" />
+    <ClCompile Include="src\Serial.cpp" />
+    <ClCompile Include="src\SimConnector.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Serial.h" />
+    <ClInclude Include="include\CommandMapper.hpp" />
+    <ClInclude Include="include\commands\AltitudeCmd.hpp" />
+    <ClInclude Include="include\commands\ACommand.hpp" />
+    <ClInclude Include="include\Serial.hpp" />
+    <ClInclude Include="include\SimConnector.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
