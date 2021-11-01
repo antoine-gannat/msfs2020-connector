@@ -7,6 +7,8 @@
 
 static void initDefinitions(const SimConnector* connector) {
     connector->initDefinition(E_DEFINITION::AUTOPILOT_ALT_CHANGE_DEF, E_VARIABLES::AUTOPILOT_ALT);
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_SPEED_CHANGE_DEF, E_VARIABLES::AUTOPILOT_SPEED);
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_VSPEED_CHANGE_DEF, E_VARIABLES::AUTOPILOT_VSPEED);
 }
 
 bool mainLoopRun = true;
@@ -30,7 +32,7 @@ static void mainLoop(const SimConnector* connector, Serial* serial) {
 int main()
 {
     try {
-        Serial* serial = new Serial("\\\\.\\COM3");
+        Serial* serial = new Serial();
         const SimConnector* connector = new SimConnector();
 
         initDefinitions(connector);
@@ -39,7 +41,7 @@ int main()
         return (0);
     }
     catch (std::exception error) {
-        std::cerr << "An unexpected error happeneded:\n" << error.what() << std::endl;
+        std::cerr << "An unexpected error happened:\n" << error.what() << std::endl;
         return (1);
     }
 }

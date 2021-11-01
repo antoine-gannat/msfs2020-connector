@@ -4,12 +4,14 @@
 
 static const DWORD readSize = 100;
 
-Serial::Serial(const std::string& comPort): m_tmpBuffer("") {
+Serial::Serial(): m_tmpBuffer("") {
 	this->m_serialHandle = CreateFile(L"\\\\.\\COM3", GENERIC_READ | GENERIC_WRITE, 0, 0, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, 0);
+	if (this->m_serialHandle == INVALID_HANDLE_VALUE) {
+		throw std::exception("Failed to connect to serial port.");
+	}
 	// Do some basic settings
 	DCB serialParams = { 0 };
 	serialParams.DCBlength = sizeof(serialParams);
-
 	GetCommState(this->m_serialHandle, &serialParams);
 	serialParams.BaudRate = 9600;
 	serialParams.ByteSize = 8;

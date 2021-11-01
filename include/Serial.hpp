@@ -2,7 +2,7 @@
 
 class Serial {
 public:
-	Serial(const std::string& comPort);
+	Serial();
 	~Serial();
 
 	// Read a string from the serial port

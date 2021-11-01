@@ -4,7 +4,8 @@
 
 // map of available variables
 static const VarsMap SimVariablesMap = {
-	{AUTOPILOT_ALT, {"AUTOPILOT ALTITUDE LOCK VAR", "feet"}}
+	{AUTOPILOT_ALT, {"AUTOPILOT ALTITUDE LOCK VAR", "feet"}},
+	{AUTOPILOT_VSPEED, {"AUTOPILOT VERTICAL HOLD VAR", "feet"}}
 };
 
 

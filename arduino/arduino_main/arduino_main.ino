@@ -1,20 +1,41 @@
-
-int potPin = 2;    // select the input pin for the potentiometer
-int val = 0;       // variable to store the value coming from the sensor
-
 void setup() {
   Serial.begin(9600); // open the serial port at 9600 bps:
 }
 
-int lastVal = 0;
+void readAndWritePotentio(const String cmdName, const int pin){
+  const int val = analogRead(pin);
+  Serial.println(cmdName + " " + val);
+}
+
+void speedControl() {
+  const String cmd = "AUTOPILOT_SPEED";
+  const int pin = 0;
+  readAndWritePotentio(cmd, pin);
+}
+
+void headingControl() {
+  const String cmd = "AUTOPILOT_HEADING";
+  const int pin = 1;
+  readAndWritePotentio(cmd, pin);
+}
+
+void altControl() {
+  const String cmd = "AUTOPILOT_ALT";
+  const int pin = 2;
+  readAndWritePotentio(cmd, pin);
+}
+
+void verticalSpeedControl() {
+  const String cmd = "AUTOPILOT_VSPEED";
+  const int pin = 3;
+  readAndWritePotentio(cmd, pin);
+}
 
 void loop() {
-  val = analogRead(potPin);    // read the value from the sensor
-  if (lastVal != val) {
-    String toPrint = "AUTOPILOT_ALT ";
-    Serial.println(toPrint + val);
-    lastVal = val;
-    delay(400);                  // stop the program for some time
-  }
+  speedControl();
+  headingControl();
+  altControl();
+  verticalSpeedControl();
+  delay(10);
 }
  

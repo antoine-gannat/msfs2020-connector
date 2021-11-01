@@ -33,11 +33,17 @@
     <ClCompile Include="src\commands\AltitudeCmd.cpp">
       <Filter>Source Files\commands</Filter>
     </ClCompile>
-    <ClCompile Include="src\commands\ACommand.cpp">
-      <Filter>Source Files\commands</Filter>
-    </ClCompile>
     <ClCompile Include="src\CommandMapper.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commands\SpeedCmd.cpp">
+      <Filter>Source Files\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commands\AutopilotSwitchCmd.cpp">
+      <Filter>Source Files\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commands\VSpeedCmd.cpp">
+      <Filter>Source Files\commands</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -55,6 +61,18 @@
     </ClInclude>
     <ClInclude Include="include\CommandMapper.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\AutopilotSwitchCmd.hpp">
+      <Filter>Header Files\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\SpeedCmd.hpp">
+      <Filter>Header Files\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\ICommand.hpp">
+      <Filter>Header Files\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\VSpeedCmd.hpp">
+      <Filter>Header Files\commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

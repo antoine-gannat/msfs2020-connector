@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -152,8 +152,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\CommandMapper.cpp" />
-    <ClCompile Include="src\commands\ACommand.cpp" />
     <ClCompile Include="src\commands\AltitudeCmd.cpp" />
+    <ClCompile Include="src\commands\AutopilotSwitchCmd.cpp" />
+    <ClCompile Include="src\commands\SpeedCmd.cpp" />
+    <ClCompile Include="src\commands\VSpeedCmd.cpp" />
     <ClCompile Include="src\MSFS2020-connector.cpp" />
     <ClCompile Include="src\Serial.cpp" />
     <ClCompile Include="src\SimConnector.cpp" />
@@ -162,6 +164,10 @@
     <ClInclude Include="include\CommandMapper.hpp" />
     <ClInclude Include="include\commands\AltitudeCmd.hpp" />
     <ClInclude Include="include\commands\ACommand.hpp" />
+    <ClInclude Include="include\commands\AutopilotSwitchCmd.hpp" />
+    <ClInclude Include="include\commands\ICommand.hpp" />
+    <ClInclude Include="include\commands\SpeedCmd.hpp" />
+    <ClInclude Include="include\commands\VSpeedCmd.hpp" />
     <ClInclude Include="include\Serial.hpp" />
     <ClInclude Include="include\SimConnector.hpp" />
   </ItemGroup>
