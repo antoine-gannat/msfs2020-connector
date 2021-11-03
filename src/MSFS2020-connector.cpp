@@ -9,6 +9,8 @@ static void initDefinitions(const SimConnector* connector) {
     connector->initDefinition(E_DEFINITION::AUTOPILOT_ALT_CHANGE_DEF, E_VARIABLES::AUTOPILOT_ALT);
     connector->initDefinition(E_DEFINITION::AUTOPILOT_SPEED_CHANGE_DEF, E_VARIABLES::AUTOPILOT_SPEED);
     connector->initDefinition(E_DEFINITION::AUTOPILOT_VSPEED_CHANGE_DEF, E_VARIABLES::AUTOPILOT_VSPEED);
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_HEADING_CHANGE_DEF, E_VARIABLES::AUTOPILOT_HEADING);
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_SWITCH_CHANGE_DEF, E_VARIABLES::AUTOPILOT_SWITCH);
 }
 
 bool mainLoopRun = true;

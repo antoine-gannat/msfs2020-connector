@@ -4,6 +4,7 @@
 // Commands
 #include "commands/ACommand.hpp"
 #include "commands/AltitudeCmd.hpp"
+#include "commands/HeadingCmd.hpp"
 #include "commands/SpeedCmd.hpp"
 #include "commands/VSpeedCmd.hpp"
 #include "commands/AutopilotSwitchCmd.hpp"
@@ -13,6 +14,7 @@ void CommandMapper::initCommands(const SimConnector* connector) {
 	this->m_commandMap.insert({ "AUTOPILOT_ALT", std::unique_ptr<ICommand>(new AltitudeCmd(connector)) });
 	this->m_commandMap.insert({ "AUTOPILOT_SPEED", std::unique_ptr<ICommand>(new SpeedCmd(connector)) });
 	this->m_commandMap.insert({ "AUTOPILOT_VSPEED", std::unique_ptr<ICommand>(new VSpeedCmd(connector)) });
+	this->m_commandMap.insert({ "AUTOPILOT_HEADING", std::unique_ptr<ICommand>(new HeadingCmd(connector)) });
 	this->m_commandMap.insert({ "AUTOPILOT_SWITCH", std::unique_ptr<ICommand>(new AutopilotSwitchCmd(connector))});
 }
 

@@ -5,7 +5,7 @@ VSpeedCmd::VSpeedCmd(const SimConnector* connector): ACommand<double>(connector,
 
 void VSpeedCmd::execute(const std::string& data) {
     // check for a diff in the value, and if none is found leave
-    if (!this->updateValueFromPotentio(data)) {
+    if (!this->updateAnalogValue(data)) {
         return;
     }
     std::cout << "[Command] Changing vertical speed to : " << this->m_currentVal << std::endl;

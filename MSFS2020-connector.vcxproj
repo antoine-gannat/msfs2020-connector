@@ -154,6 +154,7 @@
     <ClCompile Include="src\CommandMapper.cpp" />
     <ClCompile Include="src\commands\AltitudeCmd.cpp" />
     <ClCompile Include="src\commands\AutopilotSwitchCmd.cpp" />
+    <ClCompile Include="src\commands\HeadingCmd.cpp" />
     <ClCompile Include="src\commands\SpeedCmd.cpp" />
     <ClCompile Include="src\commands\VSpeedCmd.cpp" />
     <ClCompile Include="src\MSFS2020-connector.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="include\commands\AltitudeCmd.hpp" />
     <ClInclude Include="include\commands\ACommand.hpp" />
     <ClInclude Include="include\commands\AutopilotSwitchCmd.hpp" />
+    <ClInclude Include="include\commands\HeadingCmd.hpp" />
     <ClInclude Include="include\commands\ICommand.hpp" />
     <ClInclude Include="include\commands\SpeedCmd.hpp" />
     <ClInclude Include="include\commands\VSpeedCmd.hpp" />

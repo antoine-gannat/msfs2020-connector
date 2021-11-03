@@ -4,8 +4,10 @@
 
 // map of available variables
 static const VarsMap SimVariablesMap = {
-	{AUTOPILOT_ALT, {"AUTOPILOT ALTITUDE LOCK VAR", "feet"}},
-	{AUTOPILOT_VSPEED, {"AUTOPILOT VERTICAL HOLD VAR", "feet"}}
+	{AUTOPILOT_ALT, {"AUTOPILOT ALTITUDE LOCK VAR", "feet", false}},
+	{AUTOPILOT_VSPEED, {"AUTOPILOT VERTICAL HOLD VAR", "feet", false}},
+	{AUTOPILOT_SWITCH, {"AP_MASTER", "", true}},
+	{AUTOPILOT_SPEED, {"AP_SPD_VAR_SET", "knots", true}},
 };
 
 
@@ -28,16 +30,26 @@ bool SimConnector::initDefinition(const E_DEFINITION definition, const E_VARIABL
 	}
 
 	VariableInfo var = pos->second;
-	if (SimConnect_AddToDataDefinition(this->m_handle, definition, var.name.c_str(), var.unit.c_str()) != S_OK) {
-		return false;
+	if (!var.isEvent) {
+		if (SimConnect_AddToDataDefinition(this->m_handle, definition, var.name.c_str(), var.unit.c_str()) != S_OK) {
+			return false;
+		}
+	}
+	else {
+		std::cout << "map to sim event: " << var.name << std::endl;
+		if (SimConnect_MapClientEventToSimEvent(this->m_handle, definition, var.name.c_str()) != S_OK) {
+			return false;
+		}
 	}
 	return true;
 }
 
 
-bool SimConnector::sendEvent()const {
-	throw std::exception("Not implemented");
-	return false;
+bool SimConnector::sendEvent(const E_DEFINITION definition, DWORD data) const {
+	if (SimConnect_TransmitClientEvent(this->m_handle, SIMCONNECT_OBJECT_ID_USER, definition, data, SIMCONNECT_GROUP_PRIORITY_HIGHEST, SIMCONNECT_EVENT_FLAG_GROUPID_IS_PRIORITY) != S_OK) {
+		return false;
+	}
+	return true;
 }
 
 DWORD SimConnector::readSimData()const {
