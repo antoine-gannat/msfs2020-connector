@@ -1,7 +1,7 @@
 #include <iostream>
 #include "commands/VSpeedCmd.hpp"
 
-VSpeedCmd::VSpeedCmd(const SimConnector* connector): ACommand<double>(connector, 10.0) {}
+VSpeedCmd::VSpeedCmd(const SimConnector* connector): ACommand<double>(connector, 10.0, -5000.0, 5000.0) {}
 
 void VSpeedCmd::execute(const std::string& data) {
     // check for a diff in the value, and if none is found leave

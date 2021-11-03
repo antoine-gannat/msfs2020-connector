@@ -48,6 +48,12 @@
     <ClCompile Include="src\commands\HeadingCmd.cpp">
       <Filter>Source Files\commands</Filter>
     </ClCompile>
+    <ClCompile Include="src\commands\LandingGearCmd.cpp">
+      <Filter>Source Files\commands</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commands\AltitudeStepCmd.cpp">
+      <Filter>Source Files\commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Serial.hpp">
@@ -79,6 +85,15 @@
     </ClInclude>
     <ClInclude Include="include\commands\HeadingCmd.hpp">
       <Filter>Header Files\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\LandingGearCmd.hpp">
+      <Filter>Header Files\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\AltitudeStepCmd.hpp">
+      <Filter>Header Files\commands</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Globals.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -6,11 +6,14 @@
 #include "CommandMapper.hpp"
 
 static void initDefinitions(const SimConnector* connector) {
-    connector->initDefinition(E_DEFINITION::AUTOPILOT_ALT_CHANGE_DEF, E_VARIABLES::AUTOPILOT_ALT);
-    connector->initDefinition(E_DEFINITION::AUTOPILOT_SPEED_CHANGE_DEF, E_VARIABLES::AUTOPILOT_SPEED);
-    connector->initDefinition(E_DEFINITION::AUTOPILOT_VSPEED_CHANGE_DEF, E_VARIABLES::AUTOPILOT_VSPEED);
-    connector->initDefinition(E_DEFINITION::AUTOPILOT_HEADING_CHANGE_DEF, E_VARIABLES::AUTOPILOT_HEADING);
-    connector->initDefinition(E_DEFINITION::AUTOPILOT_SWITCH_CHANGE_DEF, E_VARIABLES::AUTOPILOT_SWITCH);
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_ALT_CHANGE_DEF, { "AUTOPILOT ALTITUDE LOCK VAR", "feet", false });
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_VSPEED_CHANGE_DEF, { "AUTOPILOT VERTICAL HOLD VAR", "feet", false });
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_HEADING_CHANGE_DEF, { "AUTOPILOT HEADING LOCK DIR", "", false});
+
+    // events
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_SWITCH_CHANGE_DEF, { "AP_MASTER", "", true });
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_SPEED_CHANGE_DEF, { "AP_SPD_VAR_SET", "knots", true });
+    connector->initDefinition(E_DEFINITION::LANDING_GEAR_CHANGE_DEF, { "GEAR_SET", "", true });
 }
 
 bool mainLoopRun = true;

@@ -1,9 +1,11 @@
 #include <iostream>
 #include "commands/AltitudeCmd.hpp"
+#include "Globals.hpp"
 
-AltitudeCmd::AltitudeCmd(const SimConnector* connector): ACommand(connector, 1000.0) {}
+AltitudeCmd::AltitudeCmd(const SimConnector* connector): ACommand(connector, 1000.0, 0, 50000) {}
 
 void AltitudeCmd::execute(const std::string &data) {
+    this->m_step = Globals::g_altitudeStep;
     // check for a diff in the value, and if none is found leave
     if (!this->updateAnalogValue(data)) {
         return;

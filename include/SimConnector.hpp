@@ -10,15 +10,8 @@ enum E_DEFINITION {
 	AUTOPILOT_SPEED_CHANGE_DEF,
 	AUTOPILOT_VSPEED_CHANGE_DEF,
 	AUTOPILOT_HEADING_CHANGE_DEF,
-	AUTOPILOT_SWITCH_CHANGE_DEF
-};
-
-enum E_VARIABLES {
-	AUTOPILOT_SWITCH,
-	AUTOPILOT_ALT,
-	AUTOPILOT_SPEED,
-	AUTOPILOT_VSPEED,
-	AUTOPILOT_HEADING
+	AUTOPILOT_SWITCH_CHANGE_DEF,
+	LANDING_GEAR_CHANGE_DEF
 };
 
 typedef struct s_variableInfo {
@@ -27,15 +20,12 @@ typedef struct s_variableInfo {
 	bool isEvent;
 } VariableInfo;
 
-typedef std::map<E_VARIABLES, s_variableInfo> VarsMap;
-
-
 class SimConnector {
 public:
 	SimConnector();
 	~SimConnector();
 
-	bool initDefinition(const E_DEFINITION definition, const E_VARIABLES variable) const;
+	bool initDefinition(const E_DEFINITION definition, const VariableInfo var) const;
 	bool sendEvent(const E_DEFINITION definition, DWORD data = 0) const;
 	DWORD readSimData() const;
 	bool writeSimData(const E_DEFINITION definition, const DWORD dataSize, void *data) const;

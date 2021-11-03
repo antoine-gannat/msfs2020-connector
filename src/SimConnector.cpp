@@ -2,15 +2,6 @@
 #include <iostream>
 #include "SimConnector.hpp"
 
-// map of available variables
-static const VarsMap SimVariablesMap = {
-	{AUTOPILOT_ALT, {"AUTOPILOT ALTITUDE LOCK VAR", "feet", false}},
-	{AUTOPILOT_VSPEED, {"AUTOPILOT VERTICAL HOLD VAR", "feet", false}},
-	{AUTOPILOT_SWITCH, {"AP_MASTER", "", true}},
-	{AUTOPILOT_SPEED, {"AP_SPD_VAR_SET", "knots", true}},
-};
-
-
 SimConnector::SimConnector() {
 	if (SimConnect_Open(&this->m_handle, "Sim Connector", this->m_hwnd, 0, nullptr, 0) != S_OK) {
 		throw std::exception("Failed to connect to the simulator.");
@@ -22,14 +13,7 @@ SimConnector::~SimConnector() {
 	SimConnect_Close(this->m_handle);
 }
 
-bool SimConnector::initDefinition(const E_DEFINITION definition, const E_VARIABLES variable) const {
-	VarsMap::const_iterator pos= SimVariablesMap.find(variable);
-	if (pos == SimVariablesMap.end()) {
-		std::cerr << "Couldn't find information on variable:" << variable << std::endl;
-		return false;
-	}
-
-	VariableInfo var = pos->second;
+bool SimConnector::initDefinition(const E_DEFINITION definition, const VariableInfo var) const {
 	if (!var.isEvent) {
 		if (SimConnect_AddToDataDefinition(this->m_handle, definition, var.name.c_str(), var.unit.c_str()) != S_OK) {
 			return false;
