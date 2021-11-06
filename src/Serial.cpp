@@ -38,10 +38,18 @@ Serial::~Serial() {
 std::string Serial::read() {
 	DWORD nbRead;
 	char buff[readSize];
-	// init array
-	std::memset(buff, 0, readSize);
 	bool lineBreakFound = false;
 	std::string result = this->m_tmpBuffer;
+
+	// if some data already stored, return it
+	if (this->m_storedData.size() > 0) {
+		const std::string firstVal = this->m_storedData[0];
+		// pop the first value
+		this->m_storedData.erase(this->m_storedData.begin());
+		return firstVal;
+	}
+	// init array
+	std::memset(buff, 0, readSize);
 	// reset the tmp buffer
 	this->m_tmpBuffer = "";
 	while (!lineBreakFound) {
@@ -58,9 +66,15 @@ std::string Serial::read() {
 				lineBreakFound = true;
 			}
 			// if we have found the end of the data
-			else if (lineBreakFound) {
+			else if (lineBreakFound && buff[i] != '\r') {
 				// append remaining of the incomming buffer to the tmp buffer
-				this->m_tmpBuffer += buff[i];
+				if (buff[i] == '\n') {
+					this->m_storedData.push_back(this->m_tmpBuffer);
+					this->m_tmpBuffer = "";
+				}
+				else {
+					this->m_tmpBuffer += buff[i];
+				}
 			}
 		}
 	}

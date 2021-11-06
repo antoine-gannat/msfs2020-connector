@@ -1,7 +1,7 @@
 #include <iostream>
 #include "commands/SpeedCmd.hpp"
 
-SpeedCmd::SpeedCmd(const SimConnector* connector) : ACommand(connector, 10.0, 0, 400) {}
+SpeedCmd::SpeedCmd(const SimConnector* connector) : ACommand(connector, 1.0, 0.0, 400.0) {}
 
 void SpeedCmd::execute(const std::string& data) {
     // check for a diff in the value, and if none is found leave

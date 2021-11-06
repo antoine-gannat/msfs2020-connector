@@ -155,6 +155,7 @@
     <ClCompile Include="src\commands\AltitudeCmd.cpp" />
     <ClCompile Include="src\commands\AltitudeStepCmd.cpp" />
     <ClCompile Include="src\commands\AutopilotSwitchCmd.cpp" />
+    <ClCompile Include="src\commands\DisableSwitchCmd.cpp" />
     <ClCompile Include="src\commands\HeadingCmd.cpp" />
     <ClCompile Include="src\commands\LandingGearCmd.cpp" />
     <ClCompile Include="src\commands\SpeedCmd.cpp" />
@@ -169,6 +170,7 @@
     <ClInclude Include="include\commands\ACommand.hpp" />
     <ClInclude Include="include\commands\AltitudeStepCmd.hpp" />
     <ClInclude Include="include\commands\AutopilotSwitchCmd.hpp" />
+    <ClInclude Include="include\commands\DisableSwitchCmd.hpp" />
     <ClInclude Include="include\commands\HeadingCmd.hpp" />
     <ClInclude Include="include\commands\ICommand.hpp" />
     <ClInclude Include="include\commands\LandingGearCmd.hpp" />

@@ -20,7 +20,6 @@ bool SimConnector::initDefinition(const E_DEFINITION definition, const VariableI
 		}
 	}
 	else {
-		std::cout << "map to sim event: " << var.name << std::endl;
 		if (SimConnect_MapClientEventToSimEvent(this->m_handle, definition, var.name.c_str()) != S_OK) {
 			return false;
 		}

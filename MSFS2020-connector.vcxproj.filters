@@ -54,6 +54,9 @@
     <ClCompile Include="src\commands\AltitudeStepCmd.cpp">
       <Filter>Source Files\commands</Filter>
     </ClCompile>
+    <ClCompile Include="src\commands\DisableSwitchCmd.cpp">
+      <Filter>Source Files\commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Serial.hpp">
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="include\Globals.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="include\commands\DisableSwitchCmd.hpp">
+      <Filter>Header Files\commands</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
