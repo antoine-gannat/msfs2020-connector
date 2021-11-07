@@ -2,7 +2,7 @@
 #include "commands/AltitudeCmd.hpp"
 #include "Globals.hpp"
 
-AltitudeCmd::AltitudeCmd(const SimConnector* connector): ACommand(connector, 1000.0, 0, 50000) {}
+AltitudeCmd::AltitudeCmd(const SimConnector* connector): ACommand(connector, 100.0, 0, 50000) {}
 
 void AltitudeCmd::execute(const std::string &data) {
     this->m_step = Globals::g_altitudeStep;
