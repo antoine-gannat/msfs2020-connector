@@ -11,6 +11,8 @@ void VSpeedCmd::execute(const std::string& data) {
     std::cout << "[Command] Changing vertical speed to : " << this->m_currentVal << std::endl;
     // divide by 60 to match the in-game value
     double valToSend = this->m_currentVal / 60;
+
     // Update the sim
+    this->m_connector->sendEvent(E_DEFINITION::AUTOPILOT_VSPEED_SELECTED_DEF, 1);
     this->m_connector->writeSimData(E_DEFINITION::AUTOPILOT_VSPEED_CHANGE_DEF, sizeof(valToSend), &valToSend);
 }

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "commands/HeadingCmd.hpp"
 
-HeadingCmd::HeadingCmd(const SimConnector* connector) : ACommand(connector, 0.10, 0.0, 7.2) {}
+HeadingCmd::HeadingCmd(const SimConnector* connector) : ACommand(connector, 1, 0, 360, true) {}
 
 void HeadingCmd::execute(const std::string& data) {
     // check for a diff in the value, and if none is found leave
@@ -9,6 +9,8 @@ void HeadingCmd::execute(const std::string& data) {
         return;
     }
     std::cout << "[Command] Changing heading to : " << this->m_currentVal << std::endl;
+
     // Update the sim
-    this->m_connector->writeSimData(E_DEFINITION::AUTOPILOT_HEADING_CHANGE_DEF, sizeof(this->m_currentVal), &this->m_currentVal);
+    this->m_connector->sendEvent(E_DEFINITION::AUTOPILOT_HEADING_SELECTED_DEF, 1);
+    this->m_connector->sendEvent(E_DEFINITION::AUTOPILOT_HEADING_CHANGE_DEF, this->m_currentVal);
 }

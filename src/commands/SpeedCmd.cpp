@@ -10,5 +10,6 @@ void SpeedCmd::execute(const std::string& data) {
     }
     std::cout << "[Command] Changing speed to : " << this->m_currentVal << std::endl;
     // Update the sim
+    this->m_connector->sendEvent(E_DEFINITION::AUTOPILOT_SPEED_SELECTED_DEF, 1);
     this->m_connector->sendEvent(E_DEFINITION::AUTOPILOT_SPEED_CHANGE_DEF, (DWORD)this->m_currentVal);
 }

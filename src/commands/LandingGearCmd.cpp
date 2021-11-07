@@ -1,7 +1,7 @@
 #include <iostream>
 #include "commands/LandingGearCmd.hpp"
 
-LandingGearCmd::LandingGearCmd(const SimConnector* connector) : ACommand(connector, 0) {}
+LandingGearCmd::LandingGearCmd(const SimConnector* connector) : ACommand(connector, 0, 0, 1) {}
 
 void LandingGearCmd::execute(const std::string& data) {
     // check for a diff in the value, and if none is found leave

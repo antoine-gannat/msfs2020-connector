@@ -2,7 +2,7 @@
 #include "commands/AltitudeCmd.hpp"
 #include "Globals.hpp"
 
-AltitudeCmd::AltitudeCmd(const SimConnector* connector): ACommand(connector, 100.0, 0, 50000) {}
+AltitudeCmd::AltitudeCmd(const SimConnector* connector): ACommand(connector, Globals::g_altitudeStep, 0, 50000) {}
 
 void AltitudeCmd::execute(const std::string &data) {
     this->m_step = Globals::g_altitudeStep;
@@ -12,5 +12,6 @@ void AltitudeCmd::execute(const std::string &data) {
     }
     std::cout << "[Command] Changing altitude to : " << this->m_currentVal << std::endl;
     // Update the sim
-    this->m_connector->writeSimData(E_DEFINITION::AUTOPILOT_ALT_CHANGE_DEF, sizeof(this->m_currentVal), &this->m_currentVal);
+    this->m_connector->sendEvent(E_DEFINITION::AUTOPILOT_ALT_SELECTED_DEF, 1);
+    this->m_connector->sendEvent(E_DEFINITION::AUTOPILOT_ALT_CHANGE_DEF, this->m_currentVal);
 }

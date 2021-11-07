@@ -8,7 +8,7 @@
 template <class T>
 class ACommand: public ICommand {
 public:
-	ACommand(const SimConnector* connector, T step, T min = 0.0, T max = 1000000.0) : m_connector(connector), m_lastVal(0), m_currentVal(0), m_step(step), m_min(min), m_max(max) {}
+	ACommand(const SimConnector* connector, T step, T min, T max, const bool rollOver = false) : m_connector(connector), m_lastVal(0), m_currentVal(0), m_step(step), m_min(min), m_max(max), m_rollOver(rollOver){}
 	virtual void execute(const std::string &data) = 0;
 
 protected:
@@ -36,10 +36,10 @@ protected:
         // update the store variables
         this->m_lastVal = potentioVal;
         if (newVal > this->m_max) {
-            this->m_currentVal = this->m_max;
+            this->m_currentVal = this->m_rollOver ? this->m_min : this->m_max;
         }
         else if (newVal < this->m_min) {
-            this->m_currentVal = this->m_min;
+            this->m_currentVal = this->m_rollOver ? this->m_max : this->m_min;
         }
         else {
             this->m_currentVal = newVal;
@@ -63,4 +63,5 @@ protected:
 	T m_currentVal;
     T m_min;
     T m_max;
+    bool m_rollOver;
 };

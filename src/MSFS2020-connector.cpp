@@ -6,13 +6,26 @@
 #include "CommandMapper.hpp"
 
 static void initDefinitions(const SimConnector* connector) {
-    connector->initDefinition(E_DEFINITION::AUTOPILOT_ALT_CHANGE_DEF, { "AUTOPILOT ALTITUDE LOCK VAR", "feet", false });
-    connector->initDefinition(E_DEFINITION::AUTOPILOT_VSPEED_CHANGE_DEF, { "AUTOPILOT VERTICAL HOLD VAR", "feet", false });
-    connector->initDefinition(E_DEFINITION::AUTOPILOT_HEADING_CHANGE_DEF, { "AUTOPILOT HEADING LOCK DIR", "", false});
+    // altitude
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_ALT_CHANGE_DEF, { "AP_ALT_VAR_SET_ENGLISH", "", true });
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_ALT_SELECTED_DEF, { "ALTITUDE_SLOT_INDEX_SET", "", true});
 
-    // events
+    // headinh 
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_HEADING_CHANGE_DEF, { "HEADING_BUG_SET", "", true });
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_HEADING_SELECTED_DEF, { "HEADING_SLOT_INDEX_SET", "", true });
+
+    // vspeed
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_VSPEED_SELECTED_DEF, { "VS_SLOT_INDEX_SET", "", true});
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_VSPEED_CHANGE_DEF, { "AUTOPILOT VERTICAL HOLD VAR", "feet", false });
+
+    // speed
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_SPEED_CHANGE_DEF, { "AP_SPD_VAR_SET", "", true });
+    connector->initDefinition(E_DEFINITION::AUTOPILOT_SPEED_SELECTED_DEF, { "SPEED_SLOT_INDEX_SET", "", true });
+
+    // Autopilot master
     connector->initDefinition(E_DEFINITION::AUTOPILOT_SWITCH_CHANGE_DEF, { "AP_MASTER", "", true });
-    connector->initDefinition(E_DEFINITION::AUTOPILOT_SPEED_CHANGE_DEF, { "AP_SPD_VAR_SET", "knots", true });
+
+    // landing gear
     connector->initDefinition(E_DEFINITION::LANDING_GEAR_CHANGE_DEF, { "GEAR_SET", "", true });
 }
 
